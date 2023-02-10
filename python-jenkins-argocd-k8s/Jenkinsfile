@@ -1,7 +1,8 @@
 pipeline {
     
-    agent any 
-    
+    agent {
+    docker { image 'python3' }
+  }
     environment {
         IMAGE_TAG = "${BUILD_NUMBER}"
     }
@@ -10,7 +11,7 @@ pipeline {
         
         stage('Checkout'){
            steps {
-                git credentialsId: 'f87a34a8-0e09-45e7-b9cf-6dc68feac670', 
+                git credentialsId: '4054956f-0f84-4b40-9e42-6ba8a002dd85', 
                 url: 'https://github.com/iam-veeramalla/cicd-end-to-end',
                 branch: 'main'
            }
